@@ -1,4 +1,6 @@
 const express = require("express")
+const dotenv=require("dotenv");
+dotenv.config();
 
 const app = express();
 app.use(express.json())
@@ -9,7 +11,7 @@ app.use(cors())
 
 const mongoose = require("mongoose")
 
-mongoose.connect("mongodb+srv://beno:beno123@cluster0.lci7auh.mongodb.net/?retryWrites=true&w=majority",{
+mongoose.connect(process.env.MONGO_URL,{
     useNewUrlParser: true,
     useUnifiedTopology : true,
 }).then(()=>{
